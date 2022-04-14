@@ -3,17 +3,18 @@ import shutil
 import os
 
 path = input("Enter a path: ")
-days = 500
+days = 1095
 
 days = time.time()
 
 if (os.path.exists(path)):
-    os.walk(path)
-    os.path.join(path)
+    for dic, files in path:
+        files_list = os.walk(path)
+    new_path = os.path.join(path, files_list)
     ctime = os.stat(path).st_ctime
 
     if (ctime > days):
-        os.remove(path)
+        os.remove(new_path)
         shutil.rmtree()
 
 else: 
